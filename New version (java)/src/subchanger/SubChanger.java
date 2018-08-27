@@ -8,7 +8,6 @@ public class SubChanger {
 
     
     public static void main(String[] args) {       
-        System.out.print("sadasd");
          EventQueue.invokeLater(() -> {
              SubchangerGUI frame = new SubchangerGUI();
              frame.setTitle("TextComponentTest");

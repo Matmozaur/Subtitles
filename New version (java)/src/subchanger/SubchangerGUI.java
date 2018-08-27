@@ -5,6 +5,15 @@
  */
 package subchanger;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author Matmozaur
@@ -56,6 +65,14 @@ public class SubchangerGUI extends javax.swing.JFrame {
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
 
         SearchedText.setText("Searched phrase");
+        SearchedText.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                SearchedTextFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                SearchedTextFocusLost(evt);
+            }
+        });
         SearchedText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SearchedTextActionPerformed(evt);
@@ -84,6 +101,14 @@ public class SubchangerGUI extends javax.swing.JFrame {
         jPanel1.add(jSeparator2);
 
         ReplacementText.setText("Replacement");
+        ReplacementText.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                ReplacementTextFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                ReplacementTextFocusLost(evt);
+            }
+        });
         ReplacementText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ReplacementTextActionPerformed(evt);
@@ -97,7 +122,8 @@ public class SubchangerGUI extends javax.swing.JFrame {
         jPanel2.setLayout(new javax.swing.OverlayLayout(jPanel2));
 
         TextArea.setColumns(20);
-        TextArea.setForeground(new java.awt.Color(255, 255, 255));
+        TextArea.setForeground(new java.awt.Color(0, 0, 0));
+        TextArea.setLineWrap(true);
         TextArea.setRows(5);
         jScrollPane1.setViewportView(TextArea);
 
@@ -109,6 +135,11 @@ public class SubchangerGUI extends javax.swing.JFrame {
         File.add(menuNew);
 
         menuOpen.setText("open");
+        menuOpen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuOpenActionPerformed(evt);
+            }
+        });
         File.add(menuOpen);
 
         menuSave.setText("save");
@@ -211,6 +242,44 @@ public class SubchangerGUI extends javax.swing.JFrame {
     private void menuByFunctionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuByFunctionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_menuByFunctionActionPerformed
+
+    private void SearchedTextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SearchedTextFocusGained
+        SearchedText.setText("");
+    }//GEN-LAST:event_SearchedTextFocusGained
+
+    private void SearchedTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SearchedTextFocusLost
+        SearchedText.setText("Searched phrase");
+    }//GEN-LAST:event_SearchedTextFocusLost
+
+    private void ReplacementTextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ReplacementTextFocusGained
+        ReplacementText.setText("");
+    }//GEN-LAST:event_ReplacementTextFocusGained
+
+    private void menuOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOpenActionPerformed
+        JFileChooser FileChooser = new JFileChooser();
+        int flag=FileChooser.showOpenDialog(this);
+        if(flag==JFileChooser.APPROVE_OPTION){
+            File file=FileChooser.getSelectedFile();
+            BufferedReader br;
+            try {
+                br = new BufferedReader(new FileReader(file));
+                String st;
+                while ((st = br.readLine()) != null)
+                  this.TextArea.append(st);
+                  this.TextArea.append("xxxxxxxxxxxxxx");
+            }
+            catch (FileNotFoundException ex) {
+                Logger.getLogger(SubchangerGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_menuOpenActionPerformed
+
+    private void ReplacementTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ReplacementTextFocusLost
+        ReplacementText.setText("Replacement");
+    }//GEN-LAST:event_ReplacementTextFocusLost
 
     /**
      * @param args the command line arguments
