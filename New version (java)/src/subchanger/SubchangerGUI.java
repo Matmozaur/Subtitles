@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import suppliers.*;
 
 /**
  *
@@ -20,6 +21,7 @@ import javax.swing.JFileChooser;
  */
 public class SubchangerGUI extends javax.swing.JFrame {
 
+    FileCommunicator FC= FileCommunicator.getInstance();
     /**
      * Creates new form SubchangerGUI
      */
@@ -256,25 +258,8 @@ public class SubchangerGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_ReplacementTextFocusGained
 
     private void menuOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOpenActionPerformed
-        JFileChooser FileChooser = new JFileChooser();
-        int flag=FileChooser.showOpenDialog(this);
-        if(flag==JFileChooser.APPROVE_OPTION){
-            File file=FileChooser.getSelectedFile();
-            BufferedReader br;
-            try {
-                br = new BufferedReader(new FileReader(file));
-                String st;
-                while ((st = br.readLine()) != null)
-                  this.TextArea.append(st);
-                  this.TextArea.append("xxxxxxxxxxxxxx");
-            }
-            catch (FileNotFoundException ex) {
-                Logger.getLogger(SubchangerGUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            catch(IOException e){
-                e.printStackTrace();
-            }
-        }
+        File file=FC.getUsersFile(this);
+        FC.writeSubtitles(file, this.TextArea);
     }//GEN-LAST:event_menuOpenActionPerformed
 
     private void ReplacementTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ReplacementTextFocusLost
