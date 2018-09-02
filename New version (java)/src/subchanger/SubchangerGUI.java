@@ -5,14 +5,8 @@
  */
 package subchanger;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import suppliers.*;
 
 /**
@@ -20,7 +14,8 @@ import suppliers.*;
  * @author Matmozaur
  */
 public class SubchangerGUI extends javax.swing.JFrame {
-
+    
+    char type;
     FileCommunicator FC= FileCommunicator.getInstance();
     /**
      * Creates new form SubchangerGUI
@@ -259,7 +254,10 @@ public class SubchangerGUI extends javax.swing.JFrame {
 
     private void menuOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOpenActionPerformed
         File file=FC.getUsersFile(this);
-        FC.writeSubtitles(file, this.TextArea);
+        type = FC.writeSubtitles(file, this.TextArea);
+        if(type=='0'){
+            JOptionPane.showMessageDialog(this, "Unknown type of subtitles");
+        } 
     }//GEN-LAST:event_menuOpenActionPerformed
 
     private void ReplacementTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ReplacementTextFocusLost
