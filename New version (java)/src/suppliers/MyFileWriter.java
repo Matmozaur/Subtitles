@@ -65,7 +65,7 @@ public class MyFileWriter {
             Logger.getLogger(MyFileWriter.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
-                Writer.close();
+                if(Writer !=null) Writer.close();
             } catch (IOException ex) {
                 Logger.getLogger(MyFileWriter.class.getName()).log(Level.SEVERE, null, ex);
             }

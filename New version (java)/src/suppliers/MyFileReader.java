@@ -94,6 +94,7 @@ public class MyFileReader {
     }
     
     public void writeMicroDVD(BufferedReader br,JTextArea area) throws IOException{
+        area.setText(null);
         String line="";
         int c;
         while ((c = br.read()) != -1) {
@@ -104,6 +105,7 @@ public class MyFileReader {
     }
     
     public void writeSubRip(BufferedReader br,JTextArea area) throws IOException{
+        area.setText(null);
         String line="";
         int c;
         while ((c = br.read()) != -1) {
