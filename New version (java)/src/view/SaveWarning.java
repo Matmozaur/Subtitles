@@ -68,6 +68,7 @@ public class SaveWarning extends javax.swing.JDialog {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.parent.refresh();
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -77,7 +78,7 @@ public class SaveWarning extends javax.swing.JDialog {
         else parent.FC.getFW().saveAs(parent.TextArea);
         
         this.parent.refresh();
-        
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
