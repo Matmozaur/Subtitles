@@ -47,8 +47,7 @@ public class GUI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         SearchedPhrase = new javax.swing.JTextField();
         SearchButton = new javax.swing.JButton();
-        ReplacePhrase = new javax.swing.JTextField();
-        ReplaceButton = new javax.swing.JButton();
+        AdvancedButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TextArea = new javax.swing.JTextArea();
@@ -89,7 +88,7 @@ public class GUI extends javax.swing.JFrame {
                 SearchedPhraseActionPerformed(evt);
             }
         });
-        jPanel1.add(SearchedPhrase, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 255, 32));
+        jPanel1.add(SearchedPhrase, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 390, 30));
         SearchedPhrase.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 SearchedPhraseFocusGained(evt);
@@ -108,32 +107,19 @@ public class GUI extends javax.swing.JFrame {
                 SearchButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(SearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 80, 30));
+        jPanel1.add(SearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 0, 100, 30));
 
-        ReplacePhrase.setText("Replace phrase");
-        ReplacePhrase.addActionListener(new java.awt.event.ActionListener() {
+        AdvancedButton.setForeground(new java.awt.Color(0, 102, 102));
+        AdvancedButton.setText("Advanced");
+        AdvancedButton.setMaximumSize(new java.awt.Dimension(36, 32));
+        AdvancedButton.setMinimumSize(new java.awt.Dimension(36, 32));
+        AdvancedButton.setPreferredSize(new java.awt.Dimension(36, 32));
+        AdvancedButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ReplacePhraseActionPerformed(evt);
+                AdvancedButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(ReplacePhrase, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 270, 32));
-        ReplacePhrase.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                ReplacePhraseFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                ReplacePhraseFocusLost(evt);
-            }
-        });
-
-        ReplaceButton.setText("Replace");
-        ReplaceButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        ReplaceButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ReplaceButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(ReplaceButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 90, 30));
+        jPanel1.add(AdvancedButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 0, 90, 30));
 
         jPanel2.setLayout(new java.awt.BorderLayout());
 
@@ -304,11 +290,6 @@ public class GUI extends javax.swing.JFrame {
         menuHelp.add(HelpInstruction);
 
         jMenuItem1.setText("javaDoc");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
         menuHelp.add(jMenuItem1);
 
         jMenuBar1.add(menuHelp);
@@ -321,7 +302,7 @@ public class GUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -330,9 +311,9 @@ public class GUI extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -430,14 +411,6 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SearchButtonActionPerformed
 
-    private void ReplacePhraseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReplacePhraseActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ReplacePhraseActionPerformed
-
-    private void ReplaceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReplaceButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ReplaceButtonActionPerformed
-
     private void TimeChangeCheckTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TimeChangeCheckTypeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TimeChangeCheckTypeActionPerformed
@@ -446,14 +419,9 @@ public class GUI extends javax.swing.JFrame {
         TextArea.setLineWrap(FormatWrap.isSelected());
     }//GEN-LAST:event_FormatWrapActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        try {
-            Runtime.getRuntime().exec( String.format("cmd /c start %s",
-                    "javadoc/index.html") );
-        } catch (IOException ex) {
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void AdvancedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdvancedButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AdvancedButtonActionPerformed
 
     private void SearchedPhraseFocusGained(java.awt.event.FocusEvent evt) {                                         
         SearchedPhrase.setText("");
@@ -462,14 +430,7 @@ public class GUI extends javax.swing.JFrame {
     private void SearchedPhraseFocusLost(java.awt.event.FocusEvent evt) {                                       
         SearchedPhrase.setText("Searched phrase");
     }
-    
-    private void ReplacePhraseFocusGained(java.awt.event.FocusEvent evt) {                                            
-        ReplacePhrase.setText("");
-    }        
-    
-    private void ReplacePhraseFocusLost(java.awt.event.FocusEvent evt) {                                          
-        ReplacePhrase.setText("Replacement");
-    }    
+       
     /**
      * @param args the command line arguments
      */
@@ -511,6 +472,7 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AdvancedButton;
     private javax.swing.JMenuItem EditCopy;
     private javax.swing.JMenuItem EditCut;
     private javax.swing.JMenuItem EditGoTo;
@@ -525,8 +487,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem FormatFont;
     private javax.swing.JCheckBoxMenuItem FormatWrap;
     private javax.swing.JMenuItem HelpInstruction;
-    private javax.swing.JButton ReplaceButton;
-    private javax.swing.JTextField ReplacePhrase;
     private javax.swing.JButton SearchButton;
     private javax.swing.JTextField SearchedPhrase;
     private javax.swing.JTextArea TextArea;
