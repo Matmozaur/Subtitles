@@ -35,6 +35,10 @@ public class SubchangerGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         SearchedText = new javax.swing.JTextField();
         SearchButton = new javax.swing.JButton();
@@ -55,9 +59,21 @@ public class SubchangerGUI extends javax.swing.JFrame {
         menuCopy = new javax.swing.JMenuItem();
         menuPaste = new javax.swing.JMenuItem();
         menuCut = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        menugoto = new javax.swing.JMenuItem();
+        menuselectall = new javax.swing.JMenuItem();
+        menudatetime = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         menuConstantTime = new javax.swing.JMenuItem();
         menuByFunction = new javax.swing.JMenuItem();
+
+        jMenu1.setText("File");
+        jMenuBar2.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar2.add(jMenu2);
+
+        jMenu4.setText("jMenu4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -196,6 +212,21 @@ public class SubchangerGUI extends javax.swing.JFrame {
             }
         });
         Edit.add(menuCut);
+        Edit.add(jSeparator1);
+
+        menugoto.setText("go to");
+        menugoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menugotoActionPerformed(evt);
+            }
+        });
+        Edit.add(menugoto);
+
+        menuselectall.setText("select all");
+        Edit.add(menuselectall);
+
+        menudatetime.setText("date/time");
+        Edit.add(menudatetime);
 
         jMenuBar1.add(Edit);
 
@@ -300,6 +331,10 @@ public class SubchangerGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_menuExitActionPerformed
 
+    private void menugotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menugotoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menugotoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -343,11 +378,16 @@ public class SubchangerGUI extends javax.swing.JFrame {
     private javax.swing.JButton SearchButton;
     private javax.swing.JTextField SearchedText;
     private javax.swing.JTextArea TextArea;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JMenuItem menuByFunction;
     private javax.swing.JMenuItem menuConstantTime;
@@ -359,5 +399,8 @@ public class SubchangerGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuPaste;
     private javax.swing.JMenuItem menuSave;
     private javax.swing.JMenuItem menuSaveAs;
+    private javax.swing.JMenuItem menudatetime;
+    private javax.swing.JMenuItem menugoto;
+    private javax.swing.JMenuItem menuselectall;
     // End of variables declaration//GEN-END:variables
 }

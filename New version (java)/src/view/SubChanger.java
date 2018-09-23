@@ -8,12 +8,14 @@ public class SubChanger {
 
     
     public static void main(String[] args) {       
-         EventQueue.invokeLater(() -> {
-             GUI frame = new GUI();
-             frame.setTitle("TextComponentTest");
-             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-             frame.setBounds(10, 10, 600, 400);
-             frame.setVisible(true);
+         EventQueue.invokeLater(new Runnable() {
+             @Override
+             public void run() {
+                 GUI frame = new GUI();
+                 frame.setTitle("Untitled-SubChanger");
+                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                 frame.setVisible(true);
+             }
          });
     }
     

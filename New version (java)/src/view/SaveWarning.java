@@ -73,9 +73,9 @@ public class SaveWarning extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(parent.F!=null){
-            parent.FC.getFW().save(parent.F, parent.TextArea);
+            parent.FC.getFW().save(parent.F, parent.getTextArea());
         }
-        else parent.FC.getFW().saveAs(parent.TextArea);
+        else parent.FC.getFW().saveAs(parent.getTextArea(),parent);
         
         this.parent.refresh();
         this.dispose();

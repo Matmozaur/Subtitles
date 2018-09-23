@@ -1,6 +1,5 @@
-package extras;
+package suppliers;
 
-import suppliers.*;
 import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
