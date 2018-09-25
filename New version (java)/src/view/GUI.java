@@ -7,12 +7,16 @@ package view;
 
 import java.io.File;
 import controller.FileCommunicator;
+import java.awt.GridLayout;
 import java.io.IOException;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 import javax.swing.JTextArea;
+import javax.swing.text.DefaultEditorKit;
 import suppliers.LinesUpdate;
 import suppliers.FontChooser;
 import suppliers.TextAreaSupply;
@@ -27,6 +31,7 @@ public class GUI extends javax.swing.JFrame {
     protected FileCommunicator FC = FileCommunicator.getInstance();
     protected File F=null;
     protected FontChooser fontChooser=null;
+    protected FindDialog findDialog=null;
 
     /**
      * Creates new form GUI
@@ -420,7 +425,9 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_FormatWrapActionPerformed
 
     private void AdvancedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdvancedButtonActionPerformed
-        // TODO add your handling code here:
+        if(findDialog==null)
+	findDialog=new FindDialog(TextArea);
+        findDialog.showDialog(TextArea,true);
     }//GEN-LAST:event_AdvancedButtonActionPerformed
 
     private void SearchedPhraseFocusGained(java.awt.event.FocusEvent evt) {                                         
