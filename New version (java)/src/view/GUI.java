@@ -31,7 +31,7 @@ public class GUI extends javax.swing.JFrame {
     protected FileCommunicator FC = FileCommunicator.getInstance();
     protected File F=null;
     protected FontChooser fontChooser=null;
-    protected FindDialog findDialog=null;
+    protected FindReplaceManager findDialog=null;
 
     /**
      * Creates new form GUI
@@ -426,8 +426,8 @@ public class GUI extends javax.swing.JFrame {
 
     private void AdvancedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdvancedButtonActionPerformed
         if(findDialog==null)
-	findDialog=new FindDialog(TextArea);
-        findDialog.showDialog(TextArea,true);
+	findDialog=new FindReplaceManager(TextArea);
+        findDialog.showDialog(TextArea,false);
     }//GEN-LAST:event_AdvancedButtonActionPerformed
 
     private void SearchedPhraseFocusGained(java.awt.event.FocusEvent evt) {                                         
