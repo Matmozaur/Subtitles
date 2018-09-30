@@ -257,7 +257,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SearchedPhraseActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="SearchedPhrase.addFocusListener(new java.awt.event.FocusAdapter() {&#xa;            public void focusGained(java.awt.event.FocusEvent evt) {&#xa;                SearchedPhraseFocusGained(evt);&#xa;            }&#xa;            public void focusLost(java.awt.event.FocusEvent evt) {&#xa;                SearchedPhraseFocusLost(evt);&#xa;            }&#xa;        });"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="SearchedPhrase.addFocusListener(new java.awt.event.FocusAdapter() {&#xa;            public void focusGained(java.awt.event.FocusEvent evt) {&#xa;                SearchedPhraseFocusGained(evt);&#xa;            }&#xa;        });"/>
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

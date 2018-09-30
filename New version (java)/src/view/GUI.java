@@ -7,16 +7,13 @@ package view;
 
 import java.io.File;
 import controller.FileCommunicator;
-import java.awt.GridLayout;
 import java.io.IOException;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JPopupMenu;
 import javax.swing.JTextArea;
-import javax.swing.text.DefaultEditorKit;
+import suppliers.FindReplaceSupply;
 import suppliers.LinesUpdate;
 import suppliers.FontChooser;
 import suppliers.TextAreaSupply;
@@ -97,9 +94,6 @@ public class GUI extends javax.swing.JFrame {
         SearchedPhrase.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 SearchedPhraseFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                SearchedPhraseFocusLost(evt);
             }
         });
 
@@ -413,7 +407,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_SearchedPhraseActionPerformed
 
     private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButtonActionPerformed
-        // TODO add your handling code here:
+        FindReplaceSupply.find(this.TextArea, this.SearchedPhrase);
+        
     }//GEN-LAST:event_SearchButtonActionPerformed
 
     private void TimeChangeCheckTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TimeChangeCheckTypeActionPerformed
@@ -427,7 +422,7 @@ public class GUI extends javax.swing.JFrame {
     private void AdvancedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdvancedButtonActionPerformed
         if(findDialog==null)
 	findDialog=new FindReplaceManager(TextArea);
-        findDialog.showDialog(TextArea,false);
+        findDialog.showDialog(TextArea);
     }//GEN-LAST:event_AdvancedButtonActionPerformed
 
     private void SearchedPhraseFocusGained(java.awt.event.FocusEvent evt) {                                         

@@ -6,6 +6,8 @@
 package suppliers;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import view.FindReplaceManager;
 
 /**
@@ -29,15 +31,12 @@ public class FindReplaceSupply {
 
     int selStart=m.getJta().getSelectionStart();
     int selEnd=m.getJta().getSelectionEnd();
+        System.out.println(selEnd);
 
     if( m.getUp().isSelected())
     {
         if(selStart!=selEnd)
             m.lastIndex=selEnd-s2.length()-1;
-        /*****Notepad doesnt use the else part, but it should be, instead of using caretPosition.***
-         * else
-         * m.lastIndex=m.lastIndex-s2.length();
-         ******/
         
         if(!m.getMatchCase().isSelected())
             m.lastIndex=s1.toUpperCase().lastIndexOf(s2.toUpperCase(),m.lastIndex);
@@ -53,7 +52,6 @@ public class FindReplaceSupply {
         else
             m.lastIndex=s1.indexOf(s2,m.lastIndex);
     }
-
     return m.lastIndex;
     }
     ///////////////////////////////////////////////
@@ -69,6 +67,7 @@ public class FindReplaceSupply {
     {
     m.getJta().setSelectionStart(idx);
     m.getJta().setSelectionEnd(idx+m.getFindWhat().getText().length());
+    m.getJta().revalidate();
     }
     else
             JOptionPane.showMessageDialog(m,
@@ -127,4 +126,15 @@ public class FindReplaceSupply {
 
     return counter;
     }
+    
+    public static void find(JTextArea jta,JTextField txt){
+        String s1=jta.getText();
+        String s2=txt.getText();
+        int selStart=jta.getSelectionStart();
+        int selEnd=jta.getSelectionEnd();
+        int i=s1.indexOf(s2, selEnd);
+        jta.setSelectionStart(i);
+        jta.setSelectionEnd(i+s2.length());
+    }
 }
+    

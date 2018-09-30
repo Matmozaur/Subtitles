@@ -10,7 +10,7 @@ import suppliers.FindReplaceSupply;
 public final class FindReplaceManager extends JPanel implements ActionListener
 {
 private JTextArea jta;
-public int lastIndex;
+public int lastIndex=0;
 JLabel replaceLabel;
 
 private final TextField findWhat;
@@ -95,6 +95,10 @@ replaceAllButton.addActionListener(this);
 
 cancelButton.addActionListener((ActionEvent ev) -> {
     dialog.setVisible(false);
+    findWhat.setText("");
+    replaceWith.setText("");
+    lastIndex=0;
+    
 });
 
 findWhat.addFocusListener(
@@ -140,10 +144,10 @@ else if(ev.getSource()==replaceAllButton)
 
 }
 //////////////////////////////////////////////
-public boolean showDialog(Component parent, boolean isFind )
+public boolean showDialog(Component parent )
 {
 
-Frame owner=null;
+Frame owner;
 if(parent instanceof Frame) 
 	owner=(Frame)parent;
 else
@@ -160,19 +164,7 @@ if(findWhat.getText().length()==0)
 else
 	findNextButton.setEnabled(true);
 
-replaceButton.setVisible(false);
-replaceAllButton.setVisible(false);
-replaceWith.setVisible(false);
-replaceLabel.setVisible(false);
 
-if(isFind)
-{
-//card.show(buttonPanel,"find");
-dialog.setSize(460,180);
-dialog.setTitle("Find");
-}
-else
-{
 replaceButton.setVisible(true);
 replaceAllButton.setVisible(true);
 replaceWith.setVisible(true);
@@ -181,7 +173,7 @@ replaceLabel.setVisible(true);
 //card.show(buttonPanel,"replace");
 dialog.setSize(450,200);
 dialog.setTitle("Replace");
-}
+
 
 dialog.setVisible(true);
 
