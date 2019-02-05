@@ -3,23 +3,25 @@ package view.time;
 import controller.manipulators.Manipulator;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 
-public class ConstantDialog extends JDialog {
+public class FunctionDialog extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
     private JSpinner spinner1;
-    private JTextArea ta;
+    private JSpinner spinner2;
+    JTextArea ta;
 
-    public ConstantDialog(JTextArea ta) {
+    public FunctionDialog(JTextArea ta) {
         setContentPane(contentPane);
         setModal(true);
-        SpinnerNumberModel model = new SpinnerNumberModel(0.0, -100000.0, 100000.0, 10);
-        spinner1.setModel(model);
-        getRootPane().setDefaultButton(buttonOK);
+        SpinnerNumberModel model1 = new SpinnerNumberModel(1.0, -10.0, 10.0, 0.001);
+        SpinnerNumberModel model2 = new SpinnerNumberModel(0, -100000, 100000, 100);
+        spinner1.setModel(model1);
+        spinner2.setModel(model2);
         this.ta=ta;
+        getRootPane().setDefaultButton(buttonOK);
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -33,12 +35,15 @@ public class ConstantDialog extends JDialog {
             }
         });
 
+        // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 onCancel();
             }
         });
+
+        // call onCancel() on ESCAPE
         contentPane.registerKeyboardAction(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onCancel();
@@ -47,16 +52,16 @@ public class ConstantDialog extends JDialog {
     }
 
     private void onOK() {
-        Manipulator.changeByConst(ta,(Integer)spinner1.getValue());
+        Manipulator.changeByFunction(ta,(Double) spinner1.getValue(),(Integer) spinner2.getValue());
         this.setVisible(false);
     }
 
     private void onCancel() {
-       this.setVisible(false);
+        this.setVisible(false);
     }
 
     public static void showDialog(JTextArea ta){
-        ConstantDialog dialog = new ConstantDialog(ta);
+        FunctionDialog dialog = new FunctionDialog(ta);
         dialog.pack();
         dialog.setVisible(true);
     }

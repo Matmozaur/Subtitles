@@ -4,24 +4,24 @@ import controller.manipulators.Manipulator;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.HashMap;
+import java.util.Map;
 
-public class FunctionDialog extends JDialog {
+public class AproximatePointsNumberDialog extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
     private JSpinner spinner1;
-    private JSpinner spinner2;
-    JTextArea ta;
+    private JTextArea ta;
 
-    public FunctionDialog(JTextArea ta) {
+    public AproximatePointsNumberDialog(JTextArea ta) {
         setContentPane(contentPane);
         setModal(true);
-        SpinnerNumberModel model1 = new SpinnerNumberModel(1.0, -10.0, 10.0, 0.01);
-        SpinnerNumberModel model2 = new SpinnerNumberModel(0.0, -100000.0, 100000.0, 100);
-        spinner1.setModel(model1);
-        spinner2.setModel(model2);
-        this.ta=ta;
         getRootPane().setDefaultButton(buttonOK);
+        SpinnerNumberModel model = new SpinnerNumberModel(0, 0, 10, 1);
+        spinner1.setModel(model);
+        this.ta=ta;
+
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -52,7 +52,13 @@ public class FunctionDialog extends JDialog {
     }
 
     private void onOK() {
-        Manipulator.changeByFunction(ta,(Double) spinner1.getValue(),(Integer) spinner2.getValue());
+        int[] A=new int[2];
+        Map<Integer,Integer> points=new HashMap<>();
+        for(int i = 0; i<(Integer)spinner1.getValue(); i++){
+            PointForAproximate.showDialog(A);
+            points.put(A[0],A[1]);
+        }
+        Manipulator.changeByAproximatePolynomial(ta,points);
         this.setVisible(false);
     }
 
@@ -61,7 +67,7 @@ public class FunctionDialog extends JDialog {
     }
 
     public static void showDialog(JTextArea ta){
-        FunctionDialog dialog = new FunctionDialog(ta);
+        AproximatePointsNumberDialog dialog = new AproximatePointsNumberDialog(ta);
         dialog.pack();
         dialog.setVisible(true);
     }
