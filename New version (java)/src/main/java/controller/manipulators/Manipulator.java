@@ -21,5 +21,7 @@ public class Manipulator {
 
     public static void changeByAproximatePolynomial(JTextArea ta, Map<Integer,Integer> points){
         MicroDVDTime time= TimeParser.parseTime(ta.getText());
+        time.changeByAproximatePolynomial(points);
+        ta.setText(time.toString());
     }
 }
