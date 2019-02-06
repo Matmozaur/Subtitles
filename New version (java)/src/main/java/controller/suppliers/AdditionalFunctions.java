@@ -18,6 +18,7 @@ public class AdditionalFunctions {
         for(Map.Entry<T,Integer> entry: map.entrySet()){
             if(entry.getValue()>max){
                 t=entry.getKey();
+                max=entry.getValue();
             }
         }
         return t;
