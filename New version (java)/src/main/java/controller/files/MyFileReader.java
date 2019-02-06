@@ -14,7 +14,7 @@ import java.util.Map;
 import javax.swing.JFileChooser;
 import javax.swing.JTextArea;
 import model.Type;
-import controller.suppliers.AddicionalFunctions;
+import controller.suppliers.AdditionalFunctions;
 import view.GUI;
 
 public class MyFileReader {
@@ -22,7 +22,7 @@ public class MyFileReader {
     private static MyFileReader f;
     private MyFileReader(){
         FileChooser=new JFileChooser();
-        FileChooser.addChoosableFileFilter(new MyFileFilter(".txt"));
+        FileChooser.addChoosableFileFilter(new MyFileFilter());
     }
     public static MyFileReader getInstance(){
         if(f==null){
@@ -52,11 +52,11 @@ public class MyFileReader {
             if(c=='{') types.put(Type.MicroDVD, types.get(Type.MicroDVD)+1);
             if(c=='>') types.put(Type.SubRip, types.get(Type.SubRip)+1);
         }
-        return AddicionalFunctions.<Type>maxKey(types);
+        return AdditionalFunctions.<Type>maxKey(types);
     }
             
     
-    public Type writeSubtitles(File file,JTextArea area){
+    private void writeSubtitles(File file, JTextArea area){
         BufferedReader br;
             try {
                 br = new BufferedReader(new java.io.FileReader(file));
@@ -74,7 +74,6 @@ public class MyFileReader {
                         default : defaultWrite(br,area);
                     }
                 br.close();
-                return type;
             }
             catch (FileNotFoundException ex) {
                 ex.printStackTrace();
@@ -82,7 +81,6 @@ public class MyFileReader {
             catch(IOException e){
                 e.printStackTrace();
             }
-        return null;
     }
 
     private void writeMicroDVD(BufferedReader br, JTextArea area) throws IOException{
@@ -98,24 +96,24 @@ public class MyFileReader {
     
     private void writeSubRip(BufferedReader br, JTextArea area) throws IOException{
         area.setText(null);
-        String line="";
+        StringBuilder line= new StringBuilder();
         int c;
         while ((c = br.read()) != -1) {
             char s=(char) c;
-            line=line+s;
+            line.append(s);
         }
-        area.append(line);
+        area.append(line.toString());
     }
 
     private void defaultWrite(BufferedReader br, JTextArea area) throws IOException{
         area.setText(null);
-        String line="";
+        StringBuilder line= new StringBuilder();
         int c;
         while ((c = br.read()) != -1) {
             char s=(char) c;
-            line=line+s;
+            line.append(s);
         }
-        area.append(line);
+        area.append(line.toString());
     }
     
 }

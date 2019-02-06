@@ -9,7 +9,6 @@ import javax.swing.border.*;
 class FindDialog extends JPanel implements ActionListener
 {
 	private final JTextArea jta;
-	private int lastIndex;
 	private final JLabel replaceLabel;
 
 	private final TextField findWhat;
@@ -18,17 +17,13 @@ class FindDialog extends JPanel implements ActionListener
 	private final JCheckBox matchCase;
 
 	private final JRadioButton up;
-		private final JRadioButton down;
 
 	private final JButton findNextButton;
 		private final JButton replaceButton;
 		private final JButton replaceAllButton;
-		private final JButton cancelButton;
 
-	private final JPanel direction;
-		JPanel findButtonPanel;
-		private final JPanel replaceButtonPanel;
-		CardLayout card;
+	JPanel findButtonPanel;
+	CardLayout card;
 
 	private boolean ok;
 	private JDialog dialog;
@@ -43,14 +38,14 @@ class FindDialog extends JPanel implements ActionListener
 	matchCase=new JCheckBox("Match case");
 
 	up=new JRadioButton("Up");
-	down=new JRadioButton("Down");
+		JRadioButton down = new JRadioButton("Down");
 
 	down.setSelected(true);
 	ButtonGroup bg=new ButtonGroup();
 	bg.add(up);
 	bg.add(down);
 
-	direction=new JPanel();
+		JPanel direction = new JPanel();
 	Border etched=BorderFactory.createEtchedBorder();
 	Border titled=BorderFactory.createTitledBorder(etched,"Direction");
 	direction.setBorder(titled);
@@ -67,9 +62,9 @@ class FindDialog extends JPanel implements ActionListener
 	findNextButton=new JButton("Find Next");
 	replaceButton=new JButton("Replace");
 	replaceAllButton=new JButton("Replace All");
-	cancelButton=new JButton("Cancel");
+		JButton cancelButton = new JButton("Cancel");
 
-	replaceButtonPanel=new JPanel();
+		JPanel replaceButtonPanel = new JPanel();
 	replaceButtonPanel.setLayout(new GridLayout(4,1));
 	replaceButtonPanel.add(findNextButton);
 	replaceButtonPanel.add(replaceButton);
@@ -99,13 +94,12 @@ class FindDialog extends JPanel implements ActionListener
 	replaceButton.addActionListener(this);
 	replaceAllButton.addActionListener(this);
 
-	cancelButton.addActionListener(new ActionListener()
-		{public void actionPerformed(ActionEvent ev){dialog.setVisible(false);}});
+	cancelButton.addActionListener(ev -> dialog.setVisible(false));
 
 	findWhat.addFocusListener(
 		new FocusAdapter(){public void focusLost(FocusEvent te){enableDisableButtons();}});
 	findWhat.addTextListener(
-		new TextListener(){public void textValueChanged(TextEvent te){enableDisableButtons();}});
+			te -> enableDisableButtons());
 
 	}
 	//////////////////////////
@@ -143,7 +137,7 @@ class FindDialog extends JPanel implements ActionListener
 	String s1=jta.getText();
 	String s2=findWhat.getText();
 
-	lastIndex=jta.getCaretPosition();
+		int lastIndex = jta.getCaretPosition();
 
 	int selStart=jta.getSelectionStart();
 	int selEnd=jta.getSelectionEnd();
@@ -151,26 +145,26 @@ class FindDialog extends JPanel implements ActionListener
 	if(up.isSelected())
 	{
 	if(selStart!=selEnd)
-		lastIndex=selEnd-s2.length()-1;
+		lastIndex =selEnd-s2.length()-1;
 
 	if(!matchCase.isSelected())
-		lastIndex=s1.toUpperCase().lastIndexOf(s2.toUpperCase(),lastIndex);
+		lastIndex =s1.toUpperCase().lastIndexOf(s2.toUpperCase(), lastIndex);
 	else
-		lastIndex=s1.lastIndexOf(s2,lastIndex);
+		lastIndex =s1.lastIndexOf(s2, lastIndex);
 	}
 	else
 	{
 	if(selStart!=selEnd)
-		lastIndex=selStart+1;
+		lastIndex =selStart+1;
 	if(!matchCase.isSelected())
-		lastIndex=s1.toUpperCase().indexOf(s2.toUpperCase(),lastIndex);
+		lastIndex =s1.toUpperCase().indexOf(s2.toUpperCase(), lastIndex);
 	else
-		lastIndex=s1.indexOf(s2,lastIndex);
+		lastIndex =s1.indexOf(s2, lastIndex);
 	}
 
 	return lastIndex;
 	}
-	public void findNextWithSelection()
+	private void findNextWithSelection()
 	{
 	int idx=findNext();
 	if(idx!=-1)

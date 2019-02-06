@@ -46,6 +46,7 @@ public class MyFileWriter {
             Logger.getLogger(MyFileWriter.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
+                assert Writer != null;
                 Writer.close();
             } catch (IOException ex) {
                 Logger.getLogger(MyFileWriter.class.getName()).log(Level.SEVERE, null, ex);
@@ -64,7 +65,7 @@ public class MyFileWriter {
                 if(file!=null) parent.setTitle(file.getName()+"-SubChanger");
             }
             else return;
-            Writer = new FileWriter(file);
+            Writer = new FileWriter(file != null ? file : null);
             BufferedWriter  bWriter = new BufferedWriter(Writer);
             bWriter.write(area.getText());
         } catch (IOException ex) {

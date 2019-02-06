@@ -9,10 +9,10 @@ class MyFileFilter extends FileFilter
 private String extension;
 private String description;
 
-MyFileFilter(final String ext)
+MyFileFilter()
 {
-setExtension(ext);
-setDescription("Text Files(*.txt)");
+setExtension(".txt");
+setDescription();
 }
 
 public boolean accept(File f)
@@ -30,12 +30,12 @@ public String getDescription()
 return description;
 }
 
-private void setDescription(String desc)
+private void setDescription()
 {
-if(desc==null)
+if("Text Files(*.txt)" ==null)
 	description= "All Files(*.*)";
 else
-	description= desc;
+	description= "Text Files(*.txt)";
 }
 
 private void setExtension(String ext)

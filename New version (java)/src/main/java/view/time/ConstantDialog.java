@@ -3,17 +3,16 @@ package view.time;
 import controller.manipulators.Manipulator;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 
-public class ConstantDialog extends JDialog {
+class ConstantDialog extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
     private JSpinner spinner1;
-    private JTextArea ta;
+    private final JTextArea ta;
 
-    public ConstantDialog(JTextArea ta) {
+    private ConstantDialog(JTextArea ta) {
         setContentPane(contentPane);
         setModal(true);
         SpinnerNumberModel model = new SpinnerNumberModel(0, -100000, 100000, 10);
@@ -21,17 +20,9 @@ public class ConstantDialog extends JDialog {
         getRootPane().setDefaultButton(buttonOK);
         this.ta=ta;
 
-        buttonOK.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onOK();
-            }
-        });
+        buttonOK.addActionListener(e -> onOK());
 
-        buttonCancel.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        });
+        buttonCancel.addActionListener(e -> onCancel());
 
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -39,11 +30,7 @@ public class ConstantDialog extends JDialog {
                 onCancel();
             }
         });
-        contentPane.registerKeyboardAction(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        contentPane.registerKeyboardAction(e -> onCancel(), KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
     private void onOK() {

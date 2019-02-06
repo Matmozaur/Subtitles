@@ -27,9 +27,9 @@ public class TimeParser {
             if(c=='>') types.put(Type.SubRip, types.get(Type.SubRip)+1);
             i++;
         }
-        return AddicionalFunctions.maxKey(types);
+        return AdditionalFunctions.maxKey(types);
     }
-    public static MicroDVDTime toMicroDVDTime(String s){
+    private static MicroDVDTime toMicroDVDTime(String s){
         MicroDVDTime time=new MicroDVDTime();
         int i=0,state=0;
         StringBuilder current=new StringBuilder();

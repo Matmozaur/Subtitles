@@ -10,9 +10,9 @@ import java.awt.event.*;
 
 public final class FindReplaceManager extends JPanel implements ActionListener
 {
-    private JTextArea jta;
+    private final JTextArea jta;
     public int lastIndex=0;
-    JLabel replaceLabel;
+    private final JLabel replaceLabel;
 
     private final TextField findWhat;
     private final JTextField replaceWith;
@@ -22,9 +22,15 @@ public final class FindReplaceManager extends JPanel implements ActionListener
     private final JRadioButton up;
     private final JRadioButton down;
 
-    JButton findNextButton, replaceButton, replaceAllButton, cancelButton;
+    private final JButton findNextButton;
+    private final JButton replaceButton;
+    private final JButton replaceAllButton;
+    private final JButton cancelButton;
 
-    JPanel direction,buttonPanel, findButtonPanel, replaceButtonPanel;
+    private final JPanel direction;
+    JPanel buttonPanel;
+    JPanel findButtonPanel;
+    private final JPanel replaceButtonPanel;
     CardLayout card;
 
     private boolean ok;
@@ -110,13 +116,11 @@ public final class FindReplaceManager extends JPanel implements ActionListener
                     }
                 }
         );
-        findWhat.addTextListener((TextEvent te) -> {
-            enableDisableButtons();
-        });
+        findWhat.addTextListener((TextEvent te) -> enableDisableButtons());
         enableDisableButtons();
     }
     //////////////////////////
-    void enableDisableButtons()
+    private void enableDisableButtons()
     {
         if(findWhat.getText().length()==0)
         {
@@ -145,7 +149,7 @@ public final class FindReplaceManager extends JPanel implements ActionListener
 
     }
     //////////////////////////////////////////////
-    public boolean showDialog(Component parent )
+    public void showDialog(Component parent )
     {
 
         Frame owner;
@@ -179,7 +183,6 @@ public final class FindReplaceManager extends JPanel implements ActionListener
         dialog.setVisible(true);
 
         //System.out.println(dialog.getWidth()+" "+dialog.getHeight());
-        return ok;
     }
 //////////////////////////////
 

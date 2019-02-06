@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class MicroDVDTime {
-    public List<Line> subs=new LinkedList<>();
+    public final List<Line> subs=new LinkedList<>();
 
     public void changeByConst(int k){
         for(Line l:subs){
@@ -27,7 +27,7 @@ public class MicroDVDTime {
 
     public void changeByAproximatePolynomial(Map<Integer,Integer> points){
         Set<Integer> XS=points.keySet();
-        Integer[] XD = XS.toArray(new Integer[XS.size()]);
+        Integer[] XD = XS.toArray(new Integer[0]);
         Integer[] YD=points.values().toArray(new Integer[XS.size()]);
         double[] X=new double[XD.length];
         double[] Y=new double[YD.length];

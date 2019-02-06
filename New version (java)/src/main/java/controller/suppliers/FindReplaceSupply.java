@@ -19,7 +19,7 @@ public class FindReplaceSupply {
      * @param m
      * @return
      */
-    public static int findNext(FindReplaceManager m)
+    private static int findNext(FindReplaceManager m)
     {
 
     String s1=m.getJta().getText();

@@ -11,7 +11,7 @@ import java.util.Map;
  *
  * @author Matmozaur
  */
-public class AddicionalFunctions {
+public class AdditionalFunctions {
    public static <T> T maxKey(Map<T,Integer> map){
         T t=null;
         int max=1;
