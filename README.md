@@ -1,2 +1,2 @@
 # Subtitles
-Program make to help with changing subtitles. 
+Program made to help with changing subtitles. 
